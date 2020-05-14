@@ -1,0 +1,7 @@
+steps:
+- name: train-mnist
+  runtimeProfile: jetsonml
+  containerRun:
+    image: icetekio/jetson-nano-tensorflow:master
+    script: |
+      python3 mnist.py
