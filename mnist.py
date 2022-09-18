@@ -1,6 +1,8 @@
 import os
 import tensorflow as tf
 mnist = tf.keras.datasets.mnist
+batch_size = int(os.environ.get('BATCH_SIZE', 32))
+epochs = int(os.environ.get('EPOCHS', 5))
 
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
 x_train, x_test = x_train / 255.0, x_test / 255.0
@@ -17,5 +19,5 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # batch size: https://stackoverflow.com/a/52215772
-model.fit(x_train, y_train, batch_size=int(os.environ.get('BATCH_SIZE', 32)), epochs=5)
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs)
 model.evaluate(x_test, y_test)
