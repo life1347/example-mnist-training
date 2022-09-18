@@ -17,5 +17,5 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # batch size: https://stackoverflow.com/a/52215772
-model.fit(x_train, y_train, batch_size=os.environ['BATCH_SIZE'], epochs=5)
+model.fit(x_train, y_train, batch_size=int(os.environ.get('BATCH_SIZE', 32)), epochs=5)
 model.evaluate(x_test, y_test)
